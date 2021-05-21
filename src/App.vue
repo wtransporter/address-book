@@ -1,15 +1,17 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <TheHead />
+  <TheResource />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import TheHead from './components/layout/TheHead'
+import TheResource from './components/contact-resources/TheResource'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    TheHead,
+    TheResource
   }
 }
 </script>
@@ -19,8 +21,6 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
