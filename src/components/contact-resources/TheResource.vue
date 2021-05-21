@@ -11,7 +11,7 @@
       >
       </single-contact>
     </div>
-    <div>No contacts yet !</div>
+    <div v-else>No contacts yet !</div>
   </base-card>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
   <button
-    class="px-2 py-1 border hover:text-white font-semibold"
+    class="px-2 py-1 border hover:text-white focus:outline-none font-semibold"
     :class="type ?? 'primary'"
   >
     <slot></slot>
@@ -15,10 +15,10 @@ export default {
 
 <style lang="postcss">
 .danger {
-  @apply border-red-900 text-xs hover:bg-red-600;
+  @apply border-red-900 text-xs hover:bg-red-600 focus:bg-red-700;
 }
 
 .primary {
-  @apply border-blue-900 text-xs hover:bg-blue-600;
+  @apply border-blue-900 text-xs hover:bg-blue-600 focus:bg-blue-700;
 }
 </style>
