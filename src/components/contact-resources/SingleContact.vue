@@ -8,7 +8,7 @@
       </p>
     </div>
     <div>
-      <base-button type="danger">
+      <base-button @click="deleteItem(id)" type="danger">
         Delete
       </base-button>
     </div>
@@ -18,6 +18,8 @@
 <script>
 export default {
   name: 'SingleContact',
-  props: ['id', 'name', 'phone', 'address']
+  props: ['id', 'name', 'phone', 'address'],
+
+  inject: ['deleteItem']
 }
 </script>

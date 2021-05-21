@@ -1,14 +1,17 @@
 <template>
   <base-card>
-    <single-contact
-      v-for="contact in contacts"
-      :key="contact.id"
-      :id="contact.id"
-      :name="contact.name"
-      :phone="contact.phone"
-      :address="contact.address"
-    >
-    </single-contact>
+    <div v-if="contacts.length > 0">
+      <single-contact
+        v-for="contact in contacts"
+        :key="contact.id"
+        :id="contact.id"
+        :name="contact.name"
+        :phone="contact.phone"
+        :address="contact.address"
+      >
+      </single-contact>
+    </div>
+    <div>No contacts yet !</div>
   </base-card>
 </template>
 
@@ -44,7 +47,7 @@ export default {
         },
         {
           id: 4,
-          name: 'Contact 5',
+          name: 'Contact 4',
           phone: '123456789',
           address: 'Street address 10'
         },
@@ -55,6 +58,19 @@ export default {
           address: 'Street address 10'
         }
       ]
+    }
+  },
+  methods: {
+    removeResource(id) {
+      const item = this.contacts.findIndex((contact) => contact.id === id)
+
+      this.contacts.splice(item, 1)
+    }
+  },
+  provide() {
+    return {
+      contacts: this.contacts,
+      deleteItem: this.removeResource
     }
   }
 }
