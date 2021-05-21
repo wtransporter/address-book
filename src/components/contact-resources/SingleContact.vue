@@ -8,12 +8,9 @@
       </p>
     </div>
     <div>
-      <button
-        class="px-2 py-1 border border-red-900 text-xs
-                hover:bg-red-600 hover:text-white font-semibold"
-      >
+      <base-button type="danger">
         Delete
-      </button>
+      </base-button>
     </div>
   </span>
 </template>
