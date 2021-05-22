@@ -1,10 +1,12 @@
 <template>
   <base-card>
     <div class="flex gap-2">
-      <base-button @click="setActiveTab('stored-contacts')"
+      <base-button
+        @click="setActiveTab('stored-contacts')"
+        :type="selectedAllTab"
         >All contacts</base-button
       >
-      <base-button @click="setActiveTab('new-resource')"
+      <base-button @click="setActiveTab('new-resource')" :type="selectedAddTab"
         >New contact</base-button
       >
     </div>
@@ -85,6 +87,15 @@ export default {
     }
   },
 
+  computed: {
+    selectedAllTab() {
+      return this.activeTab === 'stored-contacts' ? 'selected' : 'primary'
+    },
+    selectedAddTab() {
+      return this.activeTab === 'new-resource' ? 'selected' : 'primary'
+    }
+  },
+
   provide() {
     return {
       contacts: this.contacts,
@@ -94,3 +105,9 @@ export default {
   }
 }
 </script>
+
+<style lang="postcss">
+.selected {
+  @apply ring-2 ring-blue-900 text-xs hover:text-black hover:bg-blue-500;
+}
+</style>

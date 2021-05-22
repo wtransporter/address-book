@@ -15,10 +15,10 @@ export default {
 
 <style lang="postcss">
 .danger {
-  @apply border-red-900 text-xs hover:bg-red-600 focus:bg-red-700;
+  @apply border-red-900 text-xs hover:bg-red-600 active:bg-red-700 active:text-white;
 }
 
 .primary {
-  @apply border-blue-900 text-xs hover:bg-blue-600 focus:bg-blue-700;
+  @apply border-blue-900 text-xs hover:bg-blue-600 active:bg-blue-700 active:text-white;
 }
 </style>
