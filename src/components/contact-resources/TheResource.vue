@@ -1,27 +1,30 @@
 <template>
   <base-card>
-    <div v-if="contacts.length > 0">
-      <single-contact
-        v-for="contact in contacts"
-        :key="contact.id"
-        :id="contact.id"
-        :name="contact.name"
-        :phone="contact.phone"
-        :address="contact.address"
+    <div class="flex gap-2">
+      <base-button @click="setActiveTab('stored-contacts')"
+        >All contacts</base-button
       >
-      </single-contact>
+      <base-button @click="setActiveTab('new-resource')"
+        >New contact</base-button
+      >
     </div>
-    <div v-else>No contacts yet !</div>
+    <keep-alive>
+      <component :is="activeTab"></component>
+    </keep-alive>
   </base-card>
 </template>
 
 <script>
-import SingleContact from './SingleContact'
+import BaseButton from '../ui/BaseButton.vue'
+import NewResource from './NewResource'
+import StoredContacts from './StoredContacts'
 
 export default {
   name: 'TheResource',
   components: {
-    SingleContact
+    NewResource,
+    BaseButton,
+    StoredContacts
   },
 
   data() {
@@ -57,20 +60,36 @@ export default {
           phone: '123456789',
           address: 'Street address 10'
         }
-      ]
+      ],
+      activeTab: 'stored-contacts'
     }
   },
+
   methods: {
     removeResource(id) {
       const item = this.contacts.findIndex((contact) => contact.id === id)
 
       this.contacts.splice(item, 1)
+    },
+    setActiveTab(name) {
+      this.activeTab = name
+    },
+    addResource(name, phone, address) {
+      const newContact = {
+        id: new Date().toISOString(),
+        name: name,
+        phone: phone,
+        address: address
+      }
+      this.contacts.unshift(newContact)
     }
   },
+
   provide() {
     return {
       contacts: this.contacts,
-      deleteItem: this.removeResource
+      deleteItem: this.removeResource,
+      addContact: this.addResource
     }
   }
 }
