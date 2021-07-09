@@ -40,7 +40,16 @@ export default {
 
   methods: {
     canDeleteItem() {
-      this.confirmDelete = true;
+      this.$swal({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+      }).then((result) => {
+          if (result.isConfirmed) {
+            this.deleteItem(this.id);
+          }
+      });
     },
 
     confirmAction() {
